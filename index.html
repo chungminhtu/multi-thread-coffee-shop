@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Shop Multithreading Visualization</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #2c3e50;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: auto;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      font-size: 12px;
+      width: 80px;
+      min-width: 80px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .Take,
+    .Brew,
+    .Serve,
+    .Process,
+    .Assign,
+    .Order,
+    .Pay {
+      background-color: #e6ffe6;
+    }
+
+    .Wait {
+      background-color: #ffe6e6;
+    }
+
+    .Cache,
+    .Receive {
+      background-color: #e6e6ff;
+    }
+
+    #langSwitch {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .explanation {
+      background-color: #f9f9f9;
+      border-left: 5px solid #3498db;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="langSwitch">Switch to Vietnamese</button>
+  <h1 id="main-title"></h1>
+  <div id="scenarios"></div>
+
+  <script>
+    const data = {
+      "title": {
+        "en": "Multithreading in a Coffee Shop vs. Computer Processing (3 customers)",
+        "vi": "Đa luồng trong Quán Cà phê so với Xử lý Máy tính (3 khách hàng)"
+      },
+      "scenarios": [
+        {
+          "title": {
+            "en": "1. Synchronous Processing (Single-threaded processing)",
+            "vi": "1. Xử lý Đồng bộ (Xử lý đơn luồng)"
+          },
+          "explanation": {
+            "en": "In synchronous processing, tasks are completed one after another. This is like having one barista who must finish serving one customer entirely before moving to the next.",
+            "vi": "Trong xử lý đồng bộ, các tác vụ được hoàn thành lần lượt. Điều này giống như có một barista phải phục vụ xong hoàn toàn một khách hàng trước khi chuyển sang khách hàng tiếp theo."
+          },
+          "subsections": [
+            {
+              "title": {
+                "en": "1.1. Sequential Processing without Cache (One barista, one machine - Single CPU) - Total Time: 90 minutes",
+                "vi": "1.1. Xử lý Tuần tự không có Bộ nhớ đệm (Một barista, một máy - CPU đơn) - Tổng thời gian: 90 phút"
+              },
+              "explanation": {
+                "en": "This scenario represents a single-threaded process where each task is completed in full before moving to the next. It's like having one barista who must complete the entire order process for one customer before serving the next.",
+                "vi": "Kịch bản này đại diện cho một quy trình đơn luồng, trong đó mỗi tác vụ được hoàn thành đầy đủ trước khi chuyển sang tác vụ tiếp theo. Nó giống như có một barista phải hoàn thành toàn bộ quy trình đặt hàng cho một khách hàng trước khi phục vụ khách hàng tiếp theo."
+              },
+              "image": "./assets//1.1.jpeg",
+              "timeline": [
+                {
+                  "en": ["Customer 1", [["Take order", 10], ["Brew coffee", 10], ["Serve", 10]], 30],
+                  "vi": ["Khách hàng 1", [["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 30]
+                },
+                {
+                  "en": ["Customer 2", [["Wait", 30], ["Take order", 10], ["Brew coffee", 10], ["Serve", 10]], 60],
+                  "vi": ["Khách hàng 2", [["Chờ đợi", 30], ["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 60]
+                },
+                {
+                  "en": ["Customer 3", [["Wait", 60], ["Take order", 10], ["Brew coffee", 10], ["Serve", 10]], 90],
+                  "vi": ["Khách hàng 3", [["Chờ đợi", 60], ["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 90]
+                }
+              ]
+            },
+            {
+              "title": {
+                "en": "1.2. Processing with Caching (One barista, one machine, pre-prepared drinks - CPU with Fast Access to Stored Results) - Total Time: 40 minutes",
+                "vi": "1.2. Xử lý với Bộ nhớ đệm (Một barista, một máy, đồ uống được chuẩn bị trước - CPU với Truy cập Nhanh vào Kết quả Đã lưu) - Tổng thời gian: 40 phút"
+              },
+              "explanation": {
+                "en": "This scenario introduces caching, where frequently requested items are pre-prepared. In computing, this is similar to storing frequently accessed data in a fast-access memory to speed up operations.",
+                "vi": "Kịch bản này giới thiệu việc sử dụng bộ nhớ đệm, trong đó các mặt hàng thường xuyên được yêu cầu được chuẩn bị trước. Trong máy tính, điều này tương tự như việc lưu trữ dữ liệu thường xuyên truy cập vào bộ nhớ truy cập nhanh để tăng tốc các hoạt động."
+              },
+              "image": "./assets//1.2.jpeg",
+              "timeline": [
+                {
+                  "en": ["Customer 1", [["Take order", 5], ["Brew new", 15], ["Serve", 5], ["Cache", 5]], 30],
+                  "vi": ["Khách hàng 1", [["Nhận đơn", 5], ["Pha mới", 15], ["Phục vụ", 5], ["Lưu cache", 5]], 30]
+                },
+                {
+                  "en": ["Customer 2", [["Wait", 25], ["Take order", 3], ["Serve from Cache", 2]], 35],
+                  "vi": ["Khách hàng 2", [["Chờ đợi", 25], ["Nhận đơn", 3], ["Phục vụ từ Cache", 2]], 35]
+                },
+                {
+                  "en": ["Customer 3", [["Wait", 30], ["Take order", 3], ["Serve from Cache", 2]], 40],
+                  "vi": ["Khách hàng 3", [["Chờ đợi", 30], ["Nhận đơn", 3], ["Phục vụ từ Cache", 2]], 40]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "2. Asynchronous Processing",
+            "vi": "2. Xử lý Bất đồng bộ"
+          },
+          "explanation": {
+            "en": "Asynchronous processing allows multiple tasks to be handled simultaneously, improving efficiency. In a coffee shop, this could mean multiple baristas or one barista multitasking.",
+            "vi": "Xử lý bất đồng bộ cho phép xử lý nhiều tác vụ cùng một lúc, cải thiện hiệu quả. Trong một quán cà phê, điều này có thể có nghĩa là có nhiều barista hoặc một barista đa nhiệm."
+          },
+          "subsections": [
+            {
+              "title": {
+                "en": "2.1 Concurrent Processing (One multi-tasking barista, single machine - Single CPU with Context Switching)",
+                "vi": "2.1 Xử lý Đồng thời (Một barista đa nhiệm, một máy - CPU đơn với Chuyển đổi Ngữ cảnh)"
+              },
+              "explanation": {
+                "en": "Concurrent processing involves handling multiple tasks by switching between them rapidly. This is like a single barista juggling multiple orders at once.",
+                "vi": "Xử lý đồng thời liên quan đến việc xử lý nhiều tác vụ bằng cách chuyển đổi nhanh chóng giữa chúng. Điều này giống như một barista duy nhất xử lý nhiều đơn hàng cùng một lúc."
+              },
+              "subsubsections": [
+                {
+                  "title": {
+                    "en": "2.1.1 One multitasking barista - Time slicing (Single CPU with Rapid Task Switching) - Total Time: 60 minutes",
+                    "vi": "2.1.1 Một barista đa nhiệm - Chia thời gian (CPU đơn với Chuyển đổi Tác vụ Nhanh) - Tổng thời gian: 60 phút"
+                  },
+                  "explanation": {
+                    "en": "Time slicing involves rapidly switching between tasks, giving each task a small slice of time. This is similar to a barista who starts multiple orders but switches between them quickly.",
+                    "vi": "Chia thời gian liên quan đến việc chuyển đổi nhanh chóng giữa các tác vụ, cho mỗi tác vụ một khoảng thời gian nhỏ. Điều này tương tự như một barista bắt đầu nhiều đơn hàng nhưng chuyển đổi nhanh chóng giữa chúng."
+                  },
+                  "image": "./assets//2.1.1.jpeg",
+                  "timeline": [
+                    {
+                      "en": ["Customer 1", [["Take order", 10], ["Start brewing", 10], ["Wait", 15], ["Serve", 5]], 40],
+                      "vi": ["Khách hàng 1", [["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 15], ["Phục vụ", 5]], 40]
+                    },
+                    {
+                      "en": ["Customer 2", [["Wait", 5], ["Take order", 10], ["Start brewing", 10], ["Wait", 20], ["Serve", 5]], 50],
+                      "vi": ["Khách hàng 2", [["Chờ đợi", 5], ["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 20], ["Phục vụ", 5]], 50]
+                    },
+                    {
+                      "en": ["Customer 3", [["Wait", 10], ["Take order", 10], ["Start brewing", 10], ["Wait", 25], ["Serve", 5]], 60],
+                      "vi": ["Khách hàng 3", [["Chờ đợi", 10], ["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 25], ["Phục vụ", 5]], 60]
+                    }
+                  ]
+                },
+                {
+                  "title": {
+                    "en": "2.1.2 Multi-Threading (Multiple baristas, single machine - Single CPU with Multiple Execution Threads) - Total Time: 45 minutes",
+                    "vi": "2.1.2 Đa luồng (Nhiều barista, một máy - CPU đơn với Nhiều Luồng Thực thi) - Tổng thời gian: 45 phút"
+                  },
+                  "explanation": {
+                    "en": "Multi-threading is like having multiple baristas working on different orders but sharing one coffee machine. They can work simultaneously on different tasks but must coordinate when using shared resources.",
+                    "vi": "Đa luồng giống như có nhiều barista làm việc trên các đơn hàng khác nhau nhưng chia sẻ một máy pha cà phê. Họ có thể làm việc đồng thời trên các tác vụ khác nhau nhưng phải phối hợp khi sử dụng tài nguyên chung."
+                  },
+                  "image": "./assets//2.1.2.jpeg",
+                  "timeline": [
+                    {
+                      "en": ["Barista 1", [["Take order 1", 5], ["Wait for machine", 5], ["Brew 1", 10], ["Serve 1", 5]], 25],
+                      "vi": ["Barista 1", [["Nhận đơn 1", 5], ["Chờ máy", 5], ["Pha 1", 10], ["Phục vụ 1", 5]], 25]
+                    },
+                    {
+                      "en": ["Barista 2", [["Take order 2", 5], ["Wait", 10], ["Use machine", 5], ["Brew 2", 5], ["Serve 2", 5]], 30],
+                      "vi": ["Barista 2", [["Nhận đơn 2", 5], ["Chờ đợi", 10], ["Sử dụng máy", 5], ["Pha 2", 5], ["Phục vụ 2", 5]], 30]
+                    },
+                    {
+                      "en": ["Barista 3", [["Take order 3", 5], ["Wait", 20], ["Use machine", 5], ["Brew 3", 10], ["Serve 3", 5]], 45],
+                      "vi": ["Barista 3", [["Nhận đơn 3", 5], ["Chờ đợi", 20], ["Sử dụng máy", 5], ["Pha 3", 10], ["Phục vụ 3", 5]], 45]
+                    }
+                  ]
+                },
+                {
+                  "title": {
+                    "en": "2.1.3 Producer-Consumer (Separate order taker and barista - Single CPU with Input Queue and Processor) - Total Time: 45 minutes",
+                    "vi": "2.1.3 Người sản xuất-Người tiêu dùng (Người nhận đơn và barista riêng biệt - CPU đơn với Hàng đợi Đầu vào và Bộ xử lý) - Tổng thời gian: 45 phút"
+                  },
+                  "explanation": {
+                    "en": "The Producer-Consumer model separates the tasks of taking orders (producing) and making coffee (consuming). This is like having a dedicated order taker who queues up orders for the barista to process.",
+                    "vi": "Mô hình Người sản xuất-Người tiêu dùng tách biệt các nhiệm vụ nhận đơn hàng (sản xuất) và pha cà phê (tiêu thụ). Điều này giống như có một người nhận đơn hàng chuyên dụng xếp hàng đợi các đơn hàng để barista xử lý."
+                  },
+                  "image": "./assets//2.1.3.jpeg",
+                  "timeline": [
+                    {
+                      "en": ["Order Taker", [["Take order 1", 5], ["Take order 2", 5], ["Take order 3", 5]], 15],
+                      "vi": ["Người nhận đơn", [["Nhận đơn 1", 5], ["Nhận đơn 2", 5], ["Nhận đơn 3", 5]], 15]
+                    },
+                    {
+                      "en": ["Barista", [["Wait", 5], ["Brew coffee 1", 10], ["Brew coffee 2", 10], ["Brew coffee 3", 10]], 35],
+                      "vi": ["Barista", [["Chờ đợi", 5], ["Pha cà phê 1", 10], ["Pha cà phê 2", 10], ["Pha cà phê 3", 10]], 35]
+                    },
+                    {
+                      "en": ["Serving", [["Wait", 25], ["Serve 1", 5], ["Serve 2", 5], ["Serve 3", 5]], 40],
+                      "vi": ["Phục vụ", [["Chờ đợi", 25], ["Phục vụ 1", 5], ["Phục vụ 2", 5], ["Phục vụ 3", 5]], 40]
+                    },
+                    {
+                      "en": ["Customer 1", [["Order", 5], ["Wait", 25], ["Receive", 5]], 35],
+                      "vi": ["Khách hàng 1", [["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 35]
+                    },
+                    {
+                      "en": ["Customer 2", [["Wait", 5], ["Order", 5], ["Wait", 25], ["Receive", 5]], 40],
+                      "vi": ["Khách hàng 2", [["Chờ đợi", 5], ["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 40]
+                    },
+                    {
+                      "en": ["Customer 3", [["Wait", 10], ["Order", 5], ["Wait", 25], ["Receive", 5]], 45],
+                      "vi": ["Khách hàng 3", [["Chờ đợi", 10], ["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 45]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": {
+                "en": "2.2 Parallel Processing (Multiple baristas, multiple machines - Multiple CPUs) - Total Time: 30 minutes",
+                "vi": "2.2 Xử lý Song song (Nhiều barista, nhiều máy - Nhiều CPU) - Tổng thời gian: 30 phút"
+              },
+              "explanation": {
+                "en": "Parallel processing involves multiple workers (CPUs or baristas) working simultaneously on different tasks. This is like having multiple baristas, each with their own coffee machine, serving customers independently.",
+                "vi": "Xử lý song song liên quan đến nhiều người làm việc (CPU hoặc barista) làm việc đồng thời trên các tác vụ khác nhau. Điều này giống như có nhiều barista, mỗi người có máy pha cà phê riêng, phục vụ khách hàng độc lập."
+              },
+              "image": "./assets//2.2.jpeg",
+              "timeline": [
+                {
+                  "en": ["Barista 1", [["Take order", 5], ["Brew coffee at Espresso Machine", 20], ["Serve Customer 1", 5]], 30],
+                  "vi": ["Barista 1", [["Nhận đơn", 5], ["Pha cà phê tại Máy Espresso", 20], ["Phục vụ Khách hàng 1", 5]], 30]
+                },
+                {
+                  "en": ["Barista 2", [["Take order", 5], ["Brew coffee at Drip Coffee Maker", 20], ["Serve Customer 2", 5]], 30],
+                  "vi": ["Barista 2", [["Nhận đơn", 5], ["Pha cà phê tại Máy pha cà phê nhỏ giọt", 20], ["Phục vụ Khách hàng 2", 5]], 30]
+                },
+                {
+                  "en": ["Barista 3", [["Take order", 5], ["Brew coffee at Tea Maker Machine", 20], ["Serve Customer 3", 5]], 30],
+                  "vi": ["Barista 3", [["Nhận đơn", 5], ["Pha cà phê tại Máy pha trà", 20], ["Phục vụ Khách hàng 3", 5]], 30]
+                }
+              ]
+            },
+            {
+              "title": {
+                "en": "2.3 Microservices (Specialized coffee stations - Distributed CPUs with Specialized Services) - Total Time: 35 minutes",
+                "vi": "2.3 Microservices (Các trạm cà phê chuyên biệt - Các CPU phân tán với Dịch vụ Chuyên biệt) - Tổng thời gian: 35 phút"
+              },
+              "explanation": {
+                "en": "Microservices architecture breaks down the coffee-making process into specialized, independent services. This is like having separate stations for ordering, payment, different types of coffee preparation, and serving.",
+                "vi": "Kiến trúc microservices chia nhỏ quy trình pha cà phê thành các dịch vụ chuyên biệt, độc lập. Điều này giống như có các trạm riêng biệt để đặt hàng, thanh toán, chuẩn bị các loại cà phê khác nhau và phục vụ."
+              },
+              "image": "./assets//2.3.jpeg",
+              "timeline": [
+                {
+                  "en": ["Order Station", [["Take order 1", 5], ["Take order 2", 5], ["Take order 3", 5]], 15],
+                  "vi": ["Trạm đặt hàng", [["Nhận đơn 1", 5], ["Nhận đơn 2", 5], ["Nhận đơn 3", 5]], 15]
+                },
+                {
+                  "en": ["Payment Station", [["Process payment 1", 5], ["Process payment 2", 5], ["Process payment 3", 5]], 15],
+                  "vi": ["Trạm thanh toán", [["Xử lý thanh toán 1", 5], ["Xử lý thanh toán 2", 5], ["Xử lý thanh toán 3", 5]], 15]
+                },
+                {
+                  "en": ["Espresso Machine", [["Wait", 5], ["Brew Espresso 1", 10]], 15],
+                  "vi": ["Máy Espresso", [["Chờ đợi", 5], ["Pha Espresso 1", 10]], 15]
+                },
+                {
+                  "en": ["Drip Coffee Maker", [["Wait", 10], ["Brew drip coffee 2", 10]], 20],
+                  "vi": ["Máy pha cà phê nhỏ giọt", [["Chờ đợi", 10], ["Pha cà phê nhỏ giọt 2", 10]], 20]
+                },
+                {
+                  "en": ["Tea Station", [["Wait", 15], ["Brew tea 3", 10]], 25],
+                  "vi": ["Trạm trà", [["Chờ đợi", 15], ["Pha trà 3", 10]], 25]
+                },
+                {
+                  "en": ["Serving Station", [["Wait", 20], ["Serve 1", 3], ["Serve 2", 3], ["Serve 3", 3]], 34],
+                  "vi": ["Trạm phục vụ", [["Chờ đợi", 20], ["Phục vụ 1", 3], ["Phục vụ 2", 3], ["Phục vụ 3", 3]], 34]
+                },
+                {
+                  "en": ["Customer 1", [["Order", 5], ["Pay", 5], ["Wait Espresso", 10], ["Receive", 5]], 25],
+                  "vi": ["Khách hàng 1", [["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ Espresso", 10], ["Nhận", 5]], 25]
+                },
+                {
+                  "en": ["Customer 2", [["Wait", 5], ["Order", 5], ["Pay", 5], ["Wait drip coffee", 10], ["Receive", 5]], 30],
+                  "vi": ["Khách hàng 2", [["Chờ đợi", 5], ["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ cà phê nhỏ giọt", 10], ["Nhận", 5]], 30]
+                },
+                {
+                  "en": ["Customer 3", [["Wait", 10], ["Order", 5], ["Pay", 5], ["Wait tea", 10], ["Receive", 5]], 35],
+                  "vi": ["Khách hàng 3", [["Chờ đợi", 10], ["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ trà", 10], ["Nhận", 5]], 35]
+                }
+              ]
+            },
+            {
+              "title": {
+                "en": "2.4 Distributed Processing (Multiple coffee shops - Multiple CPUs in Different Locations) - Total Time: 30 minutes",
+                "vi": "2.4 Xử lý Phân tán (Nhiều quán cà phê - Nhiều CPU ở Các Vị trí Khác nhau) - Tổng thời gian: 30 phút"
+              },
+              "explanation": {
+                "en": "Distributed processing spreads the workload across multiple independent systems. This is like having separate coffee shops, each handling its own customers, but all part of the same chain.",
+                "vi": "Xử lý phân tán phân chia khối lượng công việc trên nhiều hệ thống độc lập. Điều này giống như có nhiều quán cà phê riêng biệt, mỗi quán xử lý khách hàng của riêng mình, nhưng tất cả đều là một phần của cùng một chuỗi."
+              },
+              "image": "./assets//2.4.jpeg",
+              "timeline": [
+                {
+                  "en": ["Shop 1", [["Take order", 5], ["Brew coffee", 20], ["Serve Customer 1", 5]], 30],
+                  "vi": ["Cửa hàng 1", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách hàng 1", 5]], 30]
+                },
+                {
+                  "en": ["Shop 2", [["Take order", 5], ["Brew coffee", 20], ["Serve Customer 2", 5]], 30],
+                  "vi": ["Cửa hàng 2", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách hàng 2", 5]], 30]
+                },
+                {
+                  "en": ["Shop 3", [["Take order", 5], ["Brew coffee", 20], ["Serve Customer 3", 5]], 30],
+                  "vi": ["Cửa hàng 3", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách hàng 3", 5]], 30]
+                }
+              ]
+            },
+            {
+              "title": {
+                "en": "2.5 Load Balancing (Efficient customer assignment with dynamic scaling - Multiple CPUs with Task Distribution) - Total Time: 30 minutes",
+                "vi": "2.5 Cân bằng Tải (Phân công khách hàng hiệu quả với mở rộng động - Nhiều CPU với Phân phối Tác vụ) - Tổng thời gian: 30 phút"
+              },
+              "explanation": {
+                "en": "Load balancing distributes tasks evenly across multiple workers. In a coffee shop, this would be like having a manager who assigns customers to different baristas based on their current workload. When all baristas are busy, a new barista is hired to handle additional customers, demonstrating dynamic scaling.",
+                "vi": "Cân bằng tải phân phối các tác vụ đồng đều trên nhiều người làm việc. Trong một quán cà phê, điều này giống như có một người quản lý phân công khách hàng cho các barista khác nhau dựa trên khối lượng công việc hiện tại của họ. Khi tất cả các barista đều bận rộn, một barista mới được thuê để xử lý khách hàng bổ sung, thể hiện khả năng mở rộng động."
+              },
+              "image": "./assets//2.5.jpeg",
+              "timeline": [
+                {
+                  "en": ["Load Balancer", [["Assign Customer 1", 1], ["Assign Customer 2", 1], ["Assign Customer 3", 1], ["Hire New Barista", 2]], 5],
+                  "vi": ["Bộ cân bằng tải", [["Phân công Khách hàng 1", 1], ["Phân công Khách hàng 2", 1], ["Phân công Khách hàng 3", 1], ["Thuê Barista Mới", 2]], 5]
+                },
+                {
+                  "en": ["Barista 1", [["Take order", 5], ["Brew coffee", 15], ["Serve", 5]], 25],
+                  "vi": ["Barista 1", [["Nhận đơn", 5], ["Pha cà phê", 15], ["Phục vụ", 5]], 25]
+                },
+                {
+                  "en": ["Barista 2", [["Take order", 5], ["Brew coffee", 15], ["Serve", 5]], 25],
+                  "vi": ["Barista 2", [["Nhận đơn", 5], ["Pha cà phê", 15], ["Phục vụ", 5]], 25]
+                },
+                {
+                  "en": ["Barista 3", [["Take order", 5], ["Brew coffee", 15], ["Serve", 5]], 25],
+                  "vi": ["Barista 3", [["Nhận đơn", 5], ["Pha cà phê", 15], ["Phục vụ", 5]], 25]
+                },
+                {
+                  "en": ["New Barista", [["Wait", 5], ["Take order", 5], ["Brew coffee", 15], ["Serve", 5]], 30],
+                  "vi": ["Barista Mới", [["Chờ đợi", 5], ["Nhận đơn", 5], ["Pha cà phê", 15], ["Phục vụ", 5]], 30]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    let currentLang = 'en';
+
+
+    function createTimelineTable(timelines) {
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        const headerRow = document.createElement('tr');
+
+        const totalTime = Math.max(...timelines.map(t => t[currentLang][2]));
+
+        // Action keywords that should be colored green
+        const greenActions = {
+          'en': ['take order', 'brew', 'serve'],
+          'vi': ['nhận đơn', 'pha', 'phục vụ']
+        };
+
+        // Create header row
+        const timelineHeader = document.createElement('th');
+        timelineHeader.textContent = currentLang === 'en' ? 'Timeline' : 'Dòng thời gian';
+        headerRow.appendChild(timelineHeader);
+
+        for (let i = 5; i <= totalTime; i += 5) {
+          const th = document.createElement('th');
+          th.textContent = i;
+          headerRow.appendChild(th);
+        }
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        // Create rows for each timeline
+        timelines.forEach(timeline => {
+          const row = document.createElement('tr');
+          const labelCell = document.createElement('td');
+          labelCell.textContent = timeline[currentLang][0];
+          row.appendChild(labelCell);
+
+          let currentTime = 0;
+          timeline[currentLang][1].forEach((event, index) => {
+            const [action, duration] = event;
+            const cell = document.createElement('td');
+            cell.textContent = action;
+
+            // Color the cell based on the action
+            if (greenActions[currentLang].some(keyword => action.toLowerCase().includes(keyword))) {
+              cell.style.backgroundColor = '#90EE90'; // Light green
+            } else {
+              cell.style.backgroundColor = '#D2B48C'; // Light brown (tan)
+            }
+
+            cell.colSpan = duration / 5;
+            row.appendChild(cell);
+            currentTime += duration;
+          });
+
+          // Fill remaining time with empty cells if necessary
+          if (currentTime < totalTime) {
+            const emptyCell = document.createElement('td');
+            emptyCell.colSpan = (totalTime - currentTime) / 5;
+            row.appendChild(emptyCell);
+          }
+
+          tbody.appendChild(row);
+        });
+
+        const totalRow = document.createElement('tr');
+        const totalLabelCell = document.createElement('td');
+        totalLabelCell.textContent = currentLang === 'en' ? 'Total Time' : 'Tổng thời gian';
+        totalRow.appendChild(totalLabelCell);
+
+        const totalTimeCell = document.createElement('td');
+        totalTimeCell.colSpan = totalTime / 5;
+        totalTimeCell.textContent = currentLang === 'en' ? `${totalTime} minutes` : `${totalTime} phút`;
+        totalTimeCell.style.fontWeight = 'bold';
+        totalRow.appendChild(totalTimeCell);
+
+        tbody.appendChild(totalRow);
+
+        table.appendChild(tbody);
+        return table;
+      }
+
+
+
+    function renderScenario(scenario, container) {
+      const h2 = document.createElement('h2');
+      h2.textContent = scenario.title[currentLang];
+      container.appendChild(h2);
+
+      const explanation = document.createElement('div');
+      explanation.className = 'explanation';
+      explanation.textContent = scenario.explanation[currentLang];
+      container.appendChild(explanation);
+
+      scenario.subsections.forEach(subsection => {
+        const h3 = document.createElement('h3');
+        h3.textContent = subsection.title[currentLang];
+        container.appendChild(h3);
+
+        const subExplanation = document.createElement('div');
+        subExplanation.className = 'explanation';
+        subExplanation.textContent = subsection.explanation[currentLang];
+        container.appendChild(subExplanation);
+
+        if (subsection.image) {
+          const img = document.createElement('img');
+          img.src = subsection.image;
+          img.alt = subsection.title[currentLang];
+          container.appendChild(img);
+        }
+
+        if (subsection.subsubsections) {
+          subsection.subsubsections.forEach(subsubsection => {
+            const h4 = document.createElement('h3');
+            h4.textContent = subsubsection.title[currentLang];
+            container.appendChild(h4);
+
+            const subsubExplanation = document.createElement('div');
+            subsubExplanation.className = 'explanation';
+            subsubExplanation.textContent = subsubsection.explanation[currentLang];
+            container.appendChild(subsubExplanation);
+
+            if (subsubsection.image) {
+              const img = document.createElement('img');
+              img.src = subsubsection.image;
+              img.alt = subsubsection.title[currentLang];
+              container.appendChild(img);
+            }
+
+            container.appendChild(createTimelineTable(subsubsection.timeline));
+          });
+        } else {
+          container.appendChild(createTimelineTable(subsection.timeline));
+        }
+      });
+    }
+
+    function renderAll() {
+      const scenariosContainer = document.getElementById('scenarios');
+      scenariosContainer.innerHTML = '';
+      document.getElementById('main-title').textContent = data.title[currentLang];
+      data.scenarios.forEach(scenario => renderScenario(scenario, scenariosContainer));
+    }
+
+    function switchLanguage() {
+      currentLang = currentLang === 'en' ? 'vi' : 'en';
+      document.getElementById('langSwitch').textContent = currentLang === 'en' ? 'Switch to Vietnamese' : 'Chuyển sang tiếng Anh';
+      renderAll();
+    }
+
+    document.getElementById('langSwitch').addEventListener('click', switchLanguage);
+
+    renderAll();
+
+  </script>
+</body>
+
+</html>
