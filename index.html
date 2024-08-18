@@ -95,7 +95,7 @@
     const data = {
       "title": {
         "en": "Multithreading in a Coffee Shop vs. Computer Processing (3 customers)",
-        "vi": "Đa luồng trong Quán Cà phê so với Xử lý Máy tính (3 khách hàng)"
+        "vi": "Đa luồng trong Quán Cà phê so với Xử lý Máy tính (3 Khách)"
       },
       "scenarios": [
         {
@@ -105,7 +105,7 @@
           },
           "explanation": {
             "en": "In synchronous processing, tasks are completed one after another. This is like having one barista who must finish serving one customer entirely before moving to the next.",
-            "vi": "Trong xử lý đồng bộ, các tác vụ được hoàn thành lần lượt. Điều này giống như có một barista phải phục vụ xong hoàn toàn một khách hàng trước khi chuyển sang khách hàng tiếp theo."
+            "vi": "Trong xử lý đồng bộ, các tác vụ được hoàn thành lần lượt. Điều này giống như có một barista phải phục vụ xong hoàn toàn một Khách trước khi chuyển sang Khách tiếp theo."
           },
           "subsections": [
             {
@@ -115,21 +115,21 @@
               },
               "explanation": {
                 "en": "This scenario represents a single-threaded process where each task is completed in full before moving to the next. It's like having one barista who must complete the entire order process for one customer before serving the next.",
-                "vi": "Kịch bản này đại diện cho một quy trình đơn luồng, trong đó mỗi tác vụ được hoàn thành đầy đủ trước khi chuyển sang tác vụ tiếp theo. Nó giống như có một barista phải hoàn thành toàn bộ quy trình đặt hàng cho một khách hàng trước khi phục vụ khách hàng tiếp theo."
+                "vi": "Kịch bản này đại diện cho một quy trình đơn luồng, trong đó mỗi tác vụ được hoàn thành đầy đủ trước khi chuyển sang tác vụ tiếp theo. Nó giống như có một barista phải hoàn thành toàn bộ quy trình đặt hàng cho một Khách trước khi phục vụ Khách tiếp theo."
               },
               "image": "./assets//1.1.jpeg",
               "timeline": [
                 {
                   "en": ["Customer 1", [["Take order", 10], ["Brew coffee", 10], ["Serve", 10]], 30],
-                  "vi": ["Khách hàng 1", [["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 30]
+                  "vi": ["Khách 1", [["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 30]
                 },
                 {
                   "en": ["Customer 2", [["Wait", 30], ["Take order", 10], ["Brew coffee", 10], ["Serve", 10]], 60],
-                  "vi": ["Khách hàng 2", [["Chờ đợi", 30], ["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 60]
+                  "vi": ["Khách 2", [["Chờ đợi", 30], ["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 60]
                 },
                 {
                   "en": ["Customer 3", [["Wait", 60], ["Take order", 10], ["Brew coffee", 10], ["Serve", 10]], 90],
-                  "vi": ["Khách hàng 3", [["Chờ đợi", 60], ["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 90]
+                  "vi": ["Khách 3", [["Chờ đợi", 60], ["Nhận đơn", 10], ["Pha cà phê", 10], ["Phục vụ", 10]], 90]
                 }
               ]
             },
@@ -146,15 +146,15 @@
               "timeline": [
                 {
                   "en": ["Customer 1", [["Take order", 5], ["Brew new", 15], ["Serve", 5], ["Cache", 5]], 30],
-                  "vi": ["Khách hàng 1", [["Nhận đơn", 5], ["Pha mới", 15], ["Phục vụ", 5], ["Lưu cache", 5]], 30]
+                  "vi": ["Khách 1", [["Nhận đơn", 5], ["Pha mới", 15], ["Phục vụ", 5], ["Lưu cache", 5]], 30]
                 },
                 {
                   "en": ["Customer 2", [["Wait", 25], ["Take order", 3], ["Serve from Cache", 2]], 35],
-                  "vi": ["Khách hàng 2", [["Chờ đợi", 25], ["Nhận đơn", 3], ["Phục vụ từ Cache", 2]], 35]
+                  "vi": ["Khách 2", [["Chờ đợi", 25], ["Nhận đơn", 3], ["Phục vụ từ Cache", 2]], 35]
                 },
                 {
                   "en": ["Customer 3", [["Wait", 30], ["Take order", 3], ["Serve from Cache", 2]], 40],
-                  "vi": ["Khách hàng 3", [["Chờ đợi", 30], ["Nhận đơn", 3], ["Phục vụ từ Cache", 2]], 40]
+                  "vi": ["Khách 3", [["Chờ đợi", 30], ["Nhận đơn", 3], ["Phục vụ từ Cache", 2]], 40]
                 }
               ]
             }
@@ -193,15 +193,15 @@
                   "timeline": [
                     {
                       "en": ["Customer 1", [["Take order", 10], ["Start brewing", 10], ["Wait", 15], ["Serve", 5]], 40],
-                      "vi": ["Khách hàng 1", [["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 15], ["Phục vụ", 5]], 40]
+                      "vi": ["Khách 1", [["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 15], ["Phục vụ", 5]], 40]
                     },
                     {
                       "en": ["Customer 2", [["Wait", 5], ["Take order", 10], ["Start brewing", 10], ["Wait", 20], ["Serve", 5]], 50],
-                      "vi": ["Khách hàng 2", [["Chờ đợi", 5], ["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 20], ["Phục vụ", 5]], 50]
+                      "vi": ["Khách 2", [["Chờ đợi", 5], ["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 20], ["Phục vụ", 5]], 50]
                     },
                     {
                       "en": ["Customer 3", [["Wait", 10], ["Take order", 10], ["Start brewing", 10], ["Wait", 25], ["Serve", 5]], 60],
-                      "vi": ["Khách hàng 3", [["Chờ đợi", 10], ["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 25], ["Phục vụ", 5]], 60]
+                      "vi": ["Khách 3", [["Chờ đợi", 10], ["Nhận đơn", 10], ["Bắt đầu pha", 10], ["Chờ đợi", 25], ["Phục vụ", 5]], 60]
                     }
                   ]
                 },
@@ -255,15 +255,15 @@
                     },
                     {
                       "en": ["Customer 1", [["Order", 5], ["Wait", 25], ["Receive", 5]], 35],
-                      "vi": ["Khách hàng 1", [["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 35]
+                      "vi": ["Khách 1", [["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 35]
                     },
                     {
                       "en": ["Customer 2", [["Wait", 5], ["Order", 5], ["Wait", 25], ["Receive", 5]], 40],
-                      "vi": ["Khách hàng 2", [["Chờ đợi", 5], ["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 40]
+                      "vi": ["Khách 2", [["Chờ đợi", 5], ["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 40]
                     },
                     {
                       "en": ["Customer 3", [["Wait", 10], ["Order", 5], ["Wait", 25], ["Receive", 5]], 45],
-                      "vi": ["Khách hàng 3", [["Chờ đợi", 10], ["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 45]
+                      "vi": ["Khách 3", [["Chờ đợi", 10], ["Đặt hàng", 5], ["Chờ đợi", 25], ["Nhận", 5]], 45]
                     }
                   ]
                 }
@@ -276,21 +276,21 @@
               },
               "explanation": {
                 "en": "Parallel processing involves multiple workers (CPUs or baristas) working simultaneously on different tasks. This is like having multiple baristas, each with their own coffee machine, serving customers independently.",
-                "vi": "Xử lý song song liên quan đến nhiều người làm việc (CPU hoặc barista) làm việc đồng thời trên các tác vụ khác nhau. Điều này giống như có nhiều barista, mỗi người có máy pha cà phê riêng, phục vụ khách hàng độc lập."
+                "vi": "Xử lý song song liên quan đến nhiều người làm việc (CPU hoặc barista) làm việc đồng thời trên các tác vụ khác nhau. Điều này giống như có nhiều barista, mỗi người có máy pha cà phê riêng, phục vụ Khách độc lập."
               },
               "image": "./assets//2.2.jpeg",
               "timeline": [
                 {
                   "en": ["Barista 1", [["Take order", 5], ["Brew coffee at Espresso Machine", 20], ["Serve Customer 1", 5]], 30],
-                  "vi": ["Barista 1", [["Nhận đơn", 5], ["Pha cà phê tại Máy Espresso", 20], ["Phục vụ Khách hàng 1", 5]], 30]
+                  "vi": ["Barista 1", [["Nhận đơn", 5], ["Pha cà phê tại Máy Espresso", 20], ["Phục vụ Khách 1", 5]], 30]
                 },
                 {
                   "en": ["Barista 2", [["Take order", 5], ["Brew coffee at Drip Coffee Maker", 20], ["Serve Customer 2", 5]], 30],
-                  "vi": ["Barista 2", [["Nhận đơn", 5], ["Pha cà phê tại Máy pha cà phê nhỏ giọt", 20], ["Phục vụ Khách hàng 2", 5]], 30]
+                  "vi": ["Barista 2", [["Nhận đơn", 5], ["Pha cà phê tại Máy pha cà phê nhỏ giọt", 20], ["Phục vụ Khách 2", 5]], 30]
                 },
                 {
                   "en": ["Barista 3", [["Take order", 5], ["Brew coffee at Tea Maker Machine", 20], ["Serve Customer 3", 5]], 30],
-                  "vi": ["Barista 3", [["Nhận đơn", 5], ["Pha cà phê tại Máy pha trà", 20], ["Phục vụ Khách hàng 3", 5]], 30]
+                  "vi": ["Barista 3", [["Nhận đơn", 5], ["Pha cà phê tại Máy pha trà", 20], ["Phục vụ Khách 3", 5]], 30]
                 }
               ]
             },
@@ -331,15 +331,15 @@
                 },
                 {
                   "en": ["Customer 1", [["Order", 5], ["Pay", 5], ["Wait Espresso", 10], ["Receive", 5]], 25],
-                  "vi": ["Khách hàng 1", [["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ Espresso", 10], ["Nhận", 5]], 25]
+                  "vi": ["Khách 1", [["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ Espresso", 10], ["Nhận", 5]], 25]
                 },
                 {
                   "en": ["Customer 2", [["Wait", 5], ["Order", 5], ["Pay", 5], ["Wait drip coffee", 10], ["Receive", 5]], 30],
-                  "vi": ["Khách hàng 2", [["Chờ đợi", 5], ["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ cà phê nhỏ giọt", 10], ["Nhận", 5]], 30]
+                  "vi": ["Khách 2", [["Chờ đợi", 5], ["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ cà phê nhỏ giọt", 10], ["Nhận", 5]], 30]
                 },
                 {
                   "en": ["Customer 3", [["Wait", 10], ["Order", 5], ["Pay", 5], ["Wait tea", 10], ["Receive", 5]], 35],
-                  "vi": ["Khách hàng 3", [["Chờ đợi", 10], ["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ trà", 10], ["Nhận", 5]], 35]
+                  "vi": ["Khách 3", [["Chờ đợi", 10], ["Đặt hàng", 5], ["Thanh toán", 5], ["Chờ trà", 10], ["Nhận", 5]], 35]
                 }
               ]
             },
@@ -350,38 +350,38 @@
               },
               "explanation": {
                 "en": "Distributed processing spreads the workload across multiple independent systems. This is like having separate coffee shops, each handling its own customers, but all part of the same chain.",
-                "vi": "Xử lý phân tán phân chia khối lượng công việc trên nhiều hệ thống độc lập. Điều này giống như có nhiều quán cà phê riêng biệt, mỗi quán xử lý khách hàng của riêng mình, nhưng tất cả đều là một phần của cùng một chuỗi."
+                "vi": "Xử lý phân tán phân chia khối lượng công việc trên nhiều hệ thống độc lập. Điều này giống như có nhiều quán cà phê riêng biệt, mỗi quán xử lý Khách của riêng mình, nhưng tất cả đều là một phần của cùng một chuỗi."
               },
               "image": "./assets//2.4.jpeg",
               "timeline": [
                 {
                   "en": ["Shop 1", [["Take order", 5], ["Brew coffee", 20], ["Serve Customer 1", 5]], 30],
-                  "vi": ["Cửa hàng 1", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách hàng 1", 5]], 30]
+                  "vi": ["Cửa hàng 1", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách 1", 5]], 30]
                 },
                 {
                   "en": ["Shop 2", [["Take order", 5], ["Brew coffee", 20], ["Serve Customer 2", 5]], 30],
-                  "vi": ["Cửa hàng 2", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách hàng 2", 5]], 30]
+                  "vi": ["Cửa hàng 2", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách 2", 5]], 30]
                 },
                 {
                   "en": ["Shop 3", [["Take order", 5], ["Brew coffee", 20], ["Serve Customer 3", 5]], 30],
-                  "vi": ["Cửa hàng 3", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách hàng 3", 5]], 30]
+                  "vi": ["Cửa hàng 3", [["Nhận đơn", 5], ["Pha cà phê", 20], ["Phục vụ Khách 3", 5]], 30]
                 }
               ]
             },
             {
               "title": {
                 "en": "2.5 Load Balancing (Efficient customer assignment with dynamic scaling - Multiple CPUs with Task Distribution) - Total Time: 30 minutes",
-                "vi": "2.5 Cân bằng Tải (Phân công khách hàng hiệu quả với mở rộng động - Nhiều CPU với Phân phối Tác vụ) - Tổng thời gian: 30 phút"
+                "vi": "2.5 Cân bằng Tải (Phân công Khách hiệu quả với mở rộng động - Nhiều CPU với Phân phối Tác vụ) - Tổng thời gian: 30 phút"
               },
               "explanation": {
                 "en": "Load balancing distributes tasks evenly across multiple workers. In a coffee shop, this would be like having a manager who assigns customers to different baristas based on their current workload. When all baristas are busy, a new barista is hired to handle additional customers, demonstrating dynamic scaling.",
-                "vi": "Cân bằng tải phân phối các tác vụ đồng đều trên nhiều người làm việc. Trong một quán cà phê, điều này giống như có một người quản lý phân công khách hàng cho các barista khác nhau dựa trên khối lượng công việc hiện tại của họ. Khi tất cả các barista đều bận rộn, một barista mới được thuê để xử lý khách hàng bổ sung, thể hiện khả năng mở rộng động."
+                "vi": "Cân bằng tải phân phối các tác vụ đồng đều trên nhiều người làm việc. Trong một quán cà phê, điều này giống như có một người quản lý phân công Khách cho các barista khác nhau dựa trên khối lượng công việc hiện tại của họ. Khi tất cả các barista đều bận rộn, một barista mới được thuê để xử lý Khách bổ sung, thể hiện khả năng mở rộng động."
               },
               "image": "./assets//2.5.jpeg",
               "timeline": [
                 {
                   "en": ["Load Balancer", [["Assign Customer 1", 1], ["Assign Customer 2", 1], ["Assign Customer 3", 1], ["Hire New Barista", 2]], 5],
-                  "vi": ["Bộ cân bằng tải", [["Phân công Khách hàng 1", 1], ["Phân công Khách hàng 2", 1], ["Phân công Khách hàng 3", 1], ["Thuê Barista Mới", 2]], 5]
+                  "vi": ["Bộ cân bằng tải", [["Phân công Khách 1", 1], ["Phân công Khách 2", 1], ["Phân công Khách 3", 1], ["Thuê Barista Mới", 2]], 5]
                 },
                 {
                   "en": ["Barista 1", [["Take order", 5], ["Brew coffee", 15], ["Serve", 5]], 25],
