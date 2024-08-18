@@ -425,7 +425,7 @@
 
         // Create header row
         const timelineHeader = document.createElement('th');
-        timelineHeader.textContent = currentLang === 'en' ? 'Timeline' : 'Dòng thời gian';
+        timelineHeader.textContent = currentLang === 'en' ? 'Timeline' : 'Thời gian';
         headerRow.appendChild(timelineHeader);
 
         for (let i = 5; i <= totalTime; i += 5) {
@@ -473,7 +473,7 @@
 
         const totalRow = document.createElement('tr');
         const totalLabelCell = document.createElement('td');
-        totalLabelCell.textContent = currentLang === 'en' ? 'Total Time' : 'Tổng thời gian';
+        totalLabelCell.textContent = currentLang === 'en' ? 'Total Time' : 'Tổng';
         totalRow.appendChild(totalLabelCell);
 
         const totalTimeCell = document.createElement('td');
@@ -552,7 +552,7 @@
 
     function switchLanguage() {
       currentLang = currentLang === 'en' ? 'vi' : 'en';
-      document.getElementById('langSwitch').textContent = currentLang === 'en' ? 'Switch to Vietnamese' : 'Chuyển sang tiếng Anh';
+      document.getElementById('langSwitch').textContent = currentLang === 'en' ? 'Tiếng Việt' : 'Tiếng Anh';
       renderAll();
     }
 
