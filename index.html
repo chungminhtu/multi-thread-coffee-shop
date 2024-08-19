@@ -104,8 +104,8 @@
             "vi": "1. Xử lý Đồng bộ (Xử lý đơn luồng)"
           },
           "explanation": {
-            "en": "Synchronous Processing: A sequential execution model where tasks are completed one after another. In a coffee shop, this is like having one barista who must finish serving one customer entirely before moving to the next. In computer hardware, this corresponds to a single-core CPU executing instructions one at a time. In a coffee shop, if a customer orders a complex drink, all subsequent customers must wait. In Node.js, this would be like processing API requests one at a time, completing each request fully before moving to the next, which can lead to poor performance under high load.",
-            "vi": "Xử lý Đồng bộ: Một mô hình thực thi tuần tự trong đó các tác vụ được hoàn thành lần lượt. Trong quán cà phê, điều này giống như có một barista phải phục vụ xong hoàn toàn một Khách trước khi chuyển sang Khách tiếp theo. Trong phần cứng máy tính, điều này tương ứng với một CPU đơn lõi thực hiện các lệnh lần lượt. Trong quán cà phê, nếu một Khách đặt một đồ uống phức tạp, tất cả các Khách sau đó phải chờ đợi. Trong Node.js, điều này giống như xử lý các yêu cầu API từng cái một, hoàn thành mỗi yêu cầu đầy đủ trước khi chuyển sang yêu cầu tiếp theo, có thể dẫn đến hiệu suất kém trong điều kiện tải cao."
+            "en": "Synchronous Processing: A sequential execution model where tasks are completed one after another. <br>In a coffee shop, this is like having one barista who must finish serving one customer entirely before moving to the next.  <br>In computer hardware, this corresponds to a single-core CPU executing instructions one at a time. In a coffee shop, if a customer orders a complex drink, all subsequent customers must wait.  <br>In Node.js, this would be like processing API requests one at a time, completing each request fully before moving to the next, which can lead to poor performance under high load.",
+            "vi": "Xử lý Đồng bộ: Một mô hình thực thi tuần tự trong đó các tác vụ được hoàn thành lần lượt.  <br>Trong quán cà phê, điều này giống như có một barista phải phục vụ xong hoàn toàn một Khách trước khi chuyển sang Khách tiếp theo. Nếu một Khách đặt một đồ uống phức tạp, tất cả các Khách sau đó phải chờ đợi. <br>Trong phần cứng máy tính, điều này tương ứng với một CPU đơn lõi thực hiện các lệnh lần lượt. <br>Trong Node.js, điều này giống như xử lý các yêu cầu API từng cái một, hoàn thành mỗi yêu cầu đầy đủ trước khi chuyển sang yêu cầu tiếp theo, có thể dẫn đến hiệu suất kém trong điều kiện tải cao."
           },
           "subsections": [
             {
@@ -114,8 +114,8 @@
                 "vi": "1.1. Xử lý Tuần tự không có Bộ nhớ đệm (Một barista, một máy - CPU đơn) - Tổng thời gian: 90 phút"
               },
                "explanation": {
-                "en": "Sequential Processing: A type of synchronous processing where each task is completed in full before moving to the next. In a coffee shop, this is like having one barista who must complete the entire order process for one customer before serving the next. In computer hardware, this is equivalent to a single CPU executing tasks one by one without any parallel processing or caching mechanisms. In a coffee shop scenario, if a customer orders a complex drink, all subsequent customers must wait, even if their orders are simple. In Node.js, this would be like using synchronous operations for everything, including I/O, which would block the event loop and prevent handling of other requests until each operation completes.",
-                "vi": "Xử lý Tuần tự: Một loại xử lý đồng bộ trong đó mỗi tác vụ được hoàn thành đầy đủ trước khi chuyển sang tác vụ tiếp theo. <br> Trong quán cà phê, điều này giống như có một barista phải hoàn thành toàn bộ quy trình đặt hàng cho một Khách trước khi phục vụ Khách tiếp theo. Trong phần cứng máy tính, điều này tương đương với một CPU thực hiện các tác vụ lần lượt mà không có bất kỳ xử lý song song hoặc cơ chế bộ nhớ đệm nào. Trong kịch bản quán cà phê, nếu một Khách đặt một đồ uống phức tạp, tất cả các Khách sau đó phải chờ đợi, ngay cả khi đơn đặt hàng của họ đơn giản. Trong Node.js, điều này giống như sử dụng các hoạt động đồng bộ cho mọi thứ, bao gồm cả I/O, điều này sẽ chặn vòng lặp sự kiện và ngăn xử lý các yêu cầu khác cho đến khi mỗi hoạt động hoàn thành."
+                "en": "Sequential Processing: A type of synchronous processing where each task is completed in full before moving to the next.  <br>In a coffee shop, this is like having one barista who must complete the entire order process for one customer before serving the next.  <br>In computer hardware, this is equivalent to a single CPU executing tasks one by one without any parallel processing or caching mechanisms. In a coffee shop scenario, if a customer orders a complex drink, all subsequent customers must wait, even if their orders are simple.  <br>In Node.js, this would be like using synchronous operations for everything, including I/O, which would block the event loop and prevent handling of other requests until each operation completes.",
+                "vi": "Xử lý Tuần tự: Một loại xử lý đồng bộ trong đó mỗi tác vụ được hoàn thành đầy đủ trước khi chuyển sang tác vụ tiếp theo. <br> Trong quán cà phê, điều này giống như có một barista phải hoàn thành toàn bộ quy trình đặt hàng cho một Khách trước khi phục vụ Khách tiếp theo.  <br>Trong phần cứng máy tính, điều này tương đương với một CPU thực hiện các tác vụ lần lượt mà không có bất kỳ xử lý song song hoặc cơ chế bộ nhớ đệm nào. Trong kịch bản quán cà phê, nếu một Khách đặt một đồ uống phức tạp, tất cả các Khách sau đó phải chờ đợi, ngay cả khi đơn đặt hàng của họ đơn giản.  <br>Trong Node.js, điều này giống như sử dụng các hoạt động đồng bộ cho mọi thứ, bao gồm cả I/O, điều này sẽ chặn vòng lặp for loop và blocking xử lý các request khác cho đến khi mỗi hoạt động hoàn thành."
               },
               "image": "./assets//1.1.jpeg",
               "timeline": [
@@ -139,8 +139,8 @@
                 "vi": "1.2. Xử lý với Bộ nhớ đệm (Một barista, một máy, đồ uống được chuẩn bị trước - CPU với Truy cập Nhanh vào Kết quả Đã lưu) - Tổng thời gian: 40 phút"
               },
               "explanation": {
-                "en": "Caching: A technique of storing frequently requested data in a faster access memory to speed up subsequent retrievals. In a coffee shop, this is like pre-preparing popular drinks so they can be served quickly when ordered. In computing, this is similar to using CPU cache or RAM to store frequently accessed data, reducing the need to fetch it from slower storage. In a coffee shop scenario, the barista prepares a batch of the most popular drink in advance. When a customer orders this drink, it can be served immediately, significantly reducing wait times. In Node.js, caching can be implemented using in-memory stores like Redis or by keeping frequently accessed data in variables. For example, caching the results of database queries can significantly speed up repeated requests for the same data.",
-                "vi": "Bộ nhớ đệm: Một kỹ thuật lưu trữ dữ liệu thường xuyên được yêu cầu trong bộ nhớ truy cập nhanh hơn để tăng tốc các lần truy xuất tiếp theo. Trong quán cà phê, điều này giống như chuẩn bị trước các đồ uống phổ biến để có thể phục vụ nhanh chóng khi được đặt hàng. Trong máy tính, điều này tương tự như sử dụng bộ nhớ đệm CPU hoặc RAM để lưu trữ dữ liệu thường xuyên truy cập, giảm nhu cầu lấy dữ liệu từ bộ nhớ chậm hơn. Trong kịch bản quán cà phê, barista chuẩn bị trước một lô đồ uống phổ biến nhất. Khi một Khách đặt đồ uống này, nó có thể được phục vụ ngay lập tức, giảm đáng kể thời gian chờ đợi. Trong Node.js, việc lưu trữ bộ nhớ đệm có thể được thực hiện bằng cách sử dụng các kho lưu trữ trong bộ nhớ như Redis hoặc bằng cách giữ dữ liệu thường xuyên truy cập trong các biến. Ví dụ, lưu trữ kết quả của các truy vấn cơ sở dữ liệu trong bộ nhớ đệm có thể tăng tốc đáng kể các yêu cầu lặp lại cho cùng một dữ liệu."
+                "en": "Caching: A technique of storing frequently requested data in a faster access memory to speed up subsequent retrievals. In a coffee shop, this is like pre-preparing popular drinks so they can be served quickly when ordered.  <br>In computing, this is similar to using CPU cache or RAM to store frequently accessed data, reducing the need to fetch it from slower storage.  <br>In a coffee shop scenario, the barista prepares a batch of the most popular drink in advance. When a customer orders this drink, it can be served immediately, significantly reducing wait times.  <br>In Node.js, caching can be implemented using in-memory stores like Redis or by keeping frequently accessed data in variables. For example, caching the results of database queries can significantly speed up repeated requests for the same data.",
+                "vi": "Bộ nhớ đệm: Một kỹ thuật lưu trữ dữ liệu thường xuyên được yêu cầu trong bộ nhớ truy cập nhanh hơn để tăng tốc các lần truy xuất tiếp theo.  <br>Trong quán cà phê, điều này giống như chuẩn bị trước các đồ uống phổ biến để có thể phục vụ nhanh chóng khi được đặt hàng. Trong máy tính, điều này tương tự như sử dụng bộ nhớ đệm CPU hoặc RAM để lưu trữ dữ liệu thường xuyên truy cập, giảm nhu cầu lấy dữ liệu từ bộ nhớ chậm hơn.  <br>Trong kịch bản quán cà phê, barista chuẩn bị trước một lô đồ uống phổ biến nhất. Khi một Khách đặt đồ uống này, nó có thể được phục vụ ngay lập tức, giảm đáng kể thời gian chờ đợi.  <br>Trong Node.js, việc lưu trữ bộ nhớ đệm có thể được thực hiện bằng cách sử dụng các kho lưu trữ trong bộ nhớ như Redis hoặc lưu dữ liệu thường xuyên truy cập trong các variable (RAM). Ví dụ, lưu trữ kết quả của các truy vấn cơ sở dữ liệu trong bộ nhớ đệm có thể tăng tốc đáng kể các yêu cầu lặp lại cho cùng một dữ liệu."
               },
               "image": "./assets//1.2.jpeg",
               "timeline": [
@@ -497,7 +497,7 @@
 
       const explanation = document.createElement('div');
       explanation.className = 'explanation';
-      explanation.textContent = scenario.explanation[currentLang];
+      explanation.innerHTML= scenario.explanation[currentLang];
       container.appendChild(explanation);
 
       scenario.subsections.forEach(subsection => {
@@ -507,7 +507,7 @@
 
         const subExplanation = document.createElement('div');
         subExplanation.className = 'explanation';
-        subExplanation.textContent = subsection.explanation[currentLang];
+        subExplanation.innerHTML= subsection.explanation[currentLang];
         container.appendChild(subExplanation);
 
         if (subsection.image) {
@@ -525,7 +525,7 @@
 
             const subsubExplanation = document.createElement('div');
             subsubExplanation.className = 'explanation';
-            subsubExplanation.textContent = subsubsection.explanation[currentLang];
+            subsubExplanation.innerHTML= subsubsection.explanation[currentLang];
             container.appendChild(subsubExplanation);
 
             if (subsubsection.image) {
